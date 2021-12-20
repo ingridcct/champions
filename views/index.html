@@ -15,6 +15,55 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous"></script>
         <script src="js/table.js"></script>
+        <script src="js/worldcup.js"></script>
+
+        <script>
+
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
+		</script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -25,41 +74,66 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-matches"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                        <li class="nav-matches"><a class="nav-link" href="#">Link</a></li>
+                        <li class="nav-matches"><a class="nav-link" href="#">Contact us</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Page content-->
+        
+        <div style="position: absolute; z-index: -99; width: 100%; height: 100%">
+          <iframe frameborder="0" height="100%" width="50%"
+          src="https://www.youtube.com/embed/X3Zs-HZczUM?controls=0&autoplay=1&mute=1&playlist=X3Zs-HZczUM&loop=1">
+          </iframe>
+      </div>
+
+
         <div class="container">
             <div class="row">
                 <div class="text-center mt-5">
                     <h1>Champions League Tickets</h1>
                     <p class="lead">Select your matches from the display below</p>
                 </div>
+                <div id="myBtnContainer">
+                    <button class="btn active" onclick="filterSelection('all')"> ALL</button>
+                    <button class="btn" onclick="filterSelection('groupA')"> Group A</button>
+                    <button class="btn" onclick="filterSelection('groupB')"> Group B</button>
+                    <button class="btn" onclick="filterSelection('groupC')"> Group C</button>
+                    <button class="btn" onclick="filterSelection('groupD')"> Group D</button>
+                      <button class="btn" onclick="filterSelection('groupE')"> Group E</button>
+                  <button class="btn" onclick="filterSelection('kits')"> Kits</button>
+                  </div>
+
+                  <div class="container">
+                    <div class="filterDiv groupA">Real Madrid x Juventus </div>
+                    <div class="filterDiv groupA">Milan x Rome F.C</div>
+                    <div class="filterDiv groupB">Manchester United x Barcelona</div>
+                    <div class="filterDiv groupB">Chelsea x FC Bayern Munich</div>
+                    <div class="filterDiv groupC">Borussia Dortmund x Paris Saint-Germain F.C.</div>
+                    <div class="filterDiv groupC">Liverpool x AFC Ajax</div>
+                    <div class="filterDiv groupD">Manchester City F.C. x Atalanta B.C.</div>
+                    <div class="filterDiv groupD">S.L. Benfica x Sevilla FC</div>
+                    <div class="filterDiv groupE">FC Porto x Olympique Lyonnais</div>
+                    <div class="filterDiv groupE">Atlético de Madrid x FC Salzburg</div>
+                    <div class="filterDiv kits">kit champions league</div>
+                  </div>
+
+                  
+                <!-- displaying table xml-->
                 <div id="results" class="col-lg-8 order-2 mb-5"></div>
-                <div class="col-lg-4 order-1 mb-3">
-                    <form>
-                        <div class="form-group">
-                            <select id="section" class="form-control" name="sec_n">
-                                <option value="0">Group A</option>
-                                <option value="1">Group B</option>
-                                <option value="2">Group C</option>
-                                <option value="3">Group D</option>
-                                <option value="4">Group E</option>
-                            </select>
-                            <input id="matches" class="form-control mt-3" type="text" name="matches" placeholder="matches"/>
-                            <input id="price" class="form-control mt-3" type="text" name="price" placeholder="Price"/>
-                        </div>
+  
                     </form>
                     <div class="d-grid gap-2">
-                        <button id="append" class="btn btn-primary btn-block mt-3" onClick="append()">Submit</button>
-                        <button id="delete" class="btn btn-danger btn-block">Delete</button>
-                        <p class="text-muted text-center">To delete an entry, click the required row first</p>
-                    </div>
+               
                 </div>
             </div>
         </div>
+
+        <form class="indent">
+            <p><input type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill">
+                   Total: €
+                   <input type="text" name="txtBillAmt"><input type="checkbox" name="cbOpts" value="isVeg" id="showVeg"><label for="showVeg">Highlight kitpack</label></p>
+         </form>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

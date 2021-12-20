@@ -61,3 +61,4 @@ function delete_row(sec, ent){
 $(document).ready(function(){
     draw_table();
 });
+

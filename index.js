@@ -53,9 +53,13 @@ router.post('/post/json', function(req, res) {
 
     console.log(req.body);
 
+   
+
     function appendJSON(obj) {
 
-        console.log(JSON.stringify(obj, null, " "))
+       // console.log(JSON.stringify(obj, null, " "))
+       console.log(JSON.stringify(obj, price, " "))
+       
 
         XMLtoJSON('worldcup.xml', function (err, result){
             if (err) throw (err);
@@ -63,6 +67,8 @@ router.post('/post/json', function(req, res) {
             result.menu.section[obj.sec_n].entry.push({'matches': obj.matches, 'price': obj.price});
 
             console.log(JSON.stringify(result, null, " "));
+            
+            
 
             JSONtoXML('worldcup.xml', result, function(err){
                 if (err) console.log(err);
@@ -111,3 +117,8 @@ server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
     const addr = server.address();
     console.log('Server listening at', addr.address + ':' + addr.port)
 });
+
+
+function billJSON(obj) {
+    
+};

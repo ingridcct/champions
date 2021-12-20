@@ -6,6 +6,7 @@ html {
 body {
 /* Margin bottom by footer height */
 margin-bottom: 60px;
+color: #fff;
 }
 
 .footer {
@@ -40,6 +41,42 @@ th {
 }
 
 .selected {
-            background-color: #dc3545;
+            background-color: #2977dd;
             color: #FFF;
 }
+
+.filterDiv {
+    float: left;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 100px;
+    line-height: 22px;
+    text-align: center;
+    margin: 5px;
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  .container {
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  
+  iframe { 
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #fff;
+}
+
+.btn {
+    color: #fff;
+    border: 1px solid white;
+}
+
