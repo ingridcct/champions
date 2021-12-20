@@ -23,6 +23,7 @@ table, th, td {
     border-collapse: collapse;
     border: 1px solid black;
     text-align: center;
+    background-color: rgba(0, 0, 10, 0.3)
 }
 
 table {
@@ -47,9 +48,8 @@ th {
 
 .filterDiv {
     float: left;
-    border: 1px solid #fff;
     color: #fff;
-    width: 100px;
+    width: 250px;
     line-height: 22px;
     text-align: center;
     margin: 5px;
@@ -63,6 +63,7 @@ th {
   .container {
     margin-top: 20px;
     overflow: hidden;
+    
   }
   
   iframe { 
@@ -73,10 +74,12 @@ th {
     justify-content: center;
     flex-direction: column;
     background: #fff;
+    
 }
 
 .btn {
     color: #fff;
     border: 1px solid white;
+    border-radius: 15px;
 }
 

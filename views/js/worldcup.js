@@ -67,3 +67,21 @@ window.addEventListener("load", function () {
         highlightkitpack('menuTable', this.checked);
     });
 });
+
+function shopping() {
+    var txt;
+    if (confirm("are you sure ?")) {
+        if(#amount == empty){
+            
+        }else {
+      alert("Order completed!");
+        }
+      document.getElementById("showVeg").reset();
+     
+    } else {
+      
+    }
+    document.getElementById("demo").innerHTML = txt;
+  }
+
+ 
