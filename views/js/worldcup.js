@@ -71,11 +71,9 @@ window.addEventListener("load", function () {
 function shopping() {
     var txt;
     if (confirm("are you sure ?")) {
-        if(#amount == empty){
-            
-        }else {
+        
       alert("Order completed!");
-        }
+        
       document.getElementById("showVeg").reset();
      
     } else {
